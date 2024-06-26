@@ -18,15 +18,12 @@ public class Post {
     @Column(name = "postId")
     private int id;
 
-    @NotNull
     @Column(name = "title")
     private String title;
 
-    @NotNull
     @Column(name = "contentsOfPost")
     private String content;
 
-    @NotNull
     private long userId;
 
 //    @OneToMany(cascade = CascadeType.ALL)

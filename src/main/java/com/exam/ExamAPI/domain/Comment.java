@@ -1,17 +1,19 @@
 package com.exam.ExamAPI.domain;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedAttributeNode;
+import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
+@Entity
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     private String contents;
+
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 
     public Comment(int id, String contents) {
         this.id = id;
@@ -37,5 +39,13 @@ public class Comment {
 
     public void setContents(String contents) {
         this.contents = contents;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }
